@@ -1,0 +1,26 @@
+{
+	"name": "save_money_backend",
+	"version": "1.0.0",
+	"main": "main.js",
+	"type": "module",
+	"scripts": {
+		"start": "node main",
+		"dev": "nodemon dev"
+	},
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"devDependencies": {
+		"@types/express": "^5.0.0",
+		"nodemon": "^3.1.7"
+	},
+	"dependencies": {
+		"bcrypt": "^5.1.1",
+		"dotenv": "^16.4.5",
+		"express": "^4.21.1",
+		"express-validator": "^7.2.0",
+		"jsonwebtoken": "^9.0.2",
+		"jwt-decode": "^4.0.0",
+		"mongodb": "^6.9.0"
+	}
+}
