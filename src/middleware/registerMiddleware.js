@@ -4,7 +4,16 @@ export const registerMiddleware = (req, res, next) => {
 	try {
 		const errors = validationResult(req)
 		if (!errors.isEmpty()) {
-			return res.status(400).json(errors.array())
+			 const response = {
+					success: false,
+					message: 'Ошибка в некоторых полях',
+					error: errors.array().map(err => ({
+						param: err.param,
+						msg: err.msg,
+						location: err.location,
+					})),
+				}
+			return res.status(400).json(response)
 		}
 		next()
 	} catch (error) {
