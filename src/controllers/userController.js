@@ -25,7 +25,20 @@ export const loginUserController = async (req, res) => {
 	try {
 		const result = await loginUser(req.body)
 		if (result.success === true) {
-			res.status(200).json(result)
+			res.cookie('accessToken', result.access, {
+				httpOnly: false,
+				secure: true,
+				sameSite: 'Strict',
+				maxAge: 15 * 60 * 1000,
+			})
+			res.cookie('refreshToken', result.refresh, {
+				httpOnly: true,
+				secure: true,
+				sameSite: 'Strict',
+				maxAge: 30 * 24 * 60 * 60 * 1000,
+			})
+			const { access, refresh, ...resultMsg } = result
+			res.status(200).json(resultMsg)
 		} else {
 			const { statusCode, ...errorResult } = result
 			res.status(result.statusCode).json(errorResult)

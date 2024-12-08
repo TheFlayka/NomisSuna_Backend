@@ -5,12 +5,14 @@ import tokenRoutes from './src/routers/tokenRouter.js'
 import moneyboxRoutes from './src/routers/moneyboxRouter.js'
 import transactionRoutes from './src/routers/transactionRouter.js'
 import cors from 'cors'
+import cookieParser from 'cookie-parser'
 dotenv.config()
 
 const app = express()
 const port = process.env.PORT || 3405
 
-app.use(cors())
+app.use(cors({ credentials: true }))
+app.use(cookieParser())
 app.options('*', cors())
 app.use(express.json())
 app.use(userRoutes)
