@@ -25,17 +25,23 @@ export const loginUserController = async (req, res) => {
 	try {
 		const result = await loginUser(req.body)
 		if (result.success === true) {
+			const expiryDate30Days = new Date()
+			expiryDate30Days.setDate(expiryDate30Days.getDate() + 30)
+
+			const expiryDate = new Date()
+			expiryDate.setMinutes(expiryDate.getMinutes() + 15)
+
 			res.cookie('accessToken', result.access, {
 				httpOnly: false,
 				secure: false,
 				sameSite: 'Strict',
-				maxAge: 15 * 60 * 1000,
+				expires: expiryDate,
 			})
 			res.cookie('refreshToken', result.refresh, {
 				httpOnly: true,
 				secure: false,
 				sameSite: 'Strict',
-				maxAge: 30 * 24 * 60 * 60 * 1000,
+				expires: expiryDate,
 			})
 			const { access, refresh, ...resultMsg } = result
 			res.status(200).json(resultMsg)

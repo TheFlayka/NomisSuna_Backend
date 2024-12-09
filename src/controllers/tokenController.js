@@ -5,12 +5,16 @@ export const getAccessToken = async (req, res) => {
 		const result = await getToken(req.cookies.refreshToken)
 
 		if (result.success === true) {
+			const expiryDate = new Date()
+			expiryDate.setMinutes(expiryDate.getMinutes() + 15)
+
 			res.cookie('accessToken', result.access, {
 				httpOnly: false,
 				secure: false,
 				sameSite: 'Strict',
-				maxAge: 15 * 60 * 1000,
+				expires: expiryDate,
 			})
+
 			const { access, ...resultMsg } = result
 			res.status(200).json(resultMsg)
 		} else {
