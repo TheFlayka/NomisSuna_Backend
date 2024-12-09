@@ -10,7 +10,7 @@ export const getAccessToken = async (req, res) => {
 
 			res.cookie('accessToken', result.access, {
 				httpOnly: false,
-				secure: false,
+				secure: true,
 				sameSite: 'None',
 				expires: expiryDate,
 			})
