@@ -34,13 +34,13 @@ export const loginUserController = async (req, res) => {
 			res.cookie('accessToken', result.access, {
 				httpOnly: false,
 				secure: false,
-				sameSite: 'Strict',
+				sameSite: 'None',
 				expires: expiryDate,
 			})
 			res.cookie('refreshToken', result.refresh, {
 				httpOnly: true,
 				secure: false,
-				sameSite: 'Strict',
+				sameSite: 'None',
 				expires: expiryDate,
 			})
 			const { access, refresh, ...resultMsg } = result
