@@ -27,13 +27,13 @@ export const loginUserController = async (req, res) => {
 		if (result.success === true) {
 			res.cookie('accessToken', result.access, {
 				httpOnly: false,
-				secure: true,
+				secure: false,
 				sameSite: 'Strict',
 				maxAge: 15 * 60 * 1000,
 			})
 			res.cookie('refreshToken', result.refresh, {
 				httpOnly: true,
-				secure: true,
+				secure: false,
 				sameSite: 'Strict',
 				maxAge: 30 * 24 * 60 * 60 * 1000,
 			})

@@ -7,7 +7,7 @@ export const getAccessToken = async (req, res) => {
 		if (result.success === true) {
 			res.cookie('accessToken', result.access, {
 				httpOnly: false,
-				secure: true,
+				secure: false,
 				sameSite: 'Strict',
 				maxAge: 15 * 60 * 1000,
 			})
