@@ -37,12 +37,12 @@ export const loginUserController = async (req, res) => {
 				sameSite: 'None',
 				expires: expiryDate,
 			})
-			res.cookie('refreshToken', result.refresh, {
-				httpOnly: true,
-				secure: true,
-				sameSite: 'None',
-				expires: expiryDate30Days,
-			})
+			// res.cookie('refreshToken', result.refresh, {
+			// 	httpOnly: true,
+			// 	secure: true,
+			// 	sameSite: 'None',
+			// 	expires: expiryDate30Days,
+			// })
 			const { access, refresh, ...resultMsg } = result
 			res.status(200).json(resultMsg)
 		} else {
