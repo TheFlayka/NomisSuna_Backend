@@ -41,7 +41,7 @@ export const loginUserController = async (req, res) => {
 				httpOnly: true,
 				secure: true,
 				sameSite: 'None',
-				expires: expiryDate,
+				expires: expiryDate30Days,
 			})
 			const { access, refresh, ...resultMsg } = result
 			res.status(200).json(resultMsg)
