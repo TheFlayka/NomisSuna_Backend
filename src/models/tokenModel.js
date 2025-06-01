@@ -10,7 +10,7 @@ export const getToken = async token => {
 		const resultCheck = await checkOneObject('users', {
 			_id: ObjectId.createFromHexString(jwtDecode(token)._id),
 		})
-		
+
 		if (resultCheck.success !== true) {
 			return resultCheck
 		}
