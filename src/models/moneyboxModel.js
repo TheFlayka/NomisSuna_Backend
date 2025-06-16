@@ -26,7 +26,7 @@ export const addMoneybox = async (body, token) => {
 		const moneybox = box.find(b => b.name === body.name)
 		if (moneybox) {
 			return {
-				success: 0,
+				success: false,
 				message: 'Такая копилка уже существует',
 				statusCode: 404,
 			}

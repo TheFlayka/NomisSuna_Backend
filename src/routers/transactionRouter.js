@@ -7,7 +7,7 @@ import {
 	getTransactionsController,
 	updateTransactionController,
 } from '../controllers/transactionController.js'
-import { registerMiddleware } from '../middleware/registerMiddleware.js'
+import { registerMiddleware } from '../middleware/authMiddleware.js'
 const router = Router()
 
 router.use(checkTokenMiddleWare)

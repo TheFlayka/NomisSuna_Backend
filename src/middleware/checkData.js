@@ -5,6 +5,7 @@ export const checkTokenMiddleWare = (req, res, next) => {
 				message: 'Токен не был отправлен',
 				success: false,
 			})
+			return
 		}
 		next()
 	} catch (error) {

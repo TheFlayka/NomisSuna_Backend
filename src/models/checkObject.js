@@ -9,7 +9,7 @@ export const checkOneObject = async (collection, query) => {
 
 	if (!object) {
 		return {
-			success: 0,
+			success: false,
 			message: `Не удалось найти объект`,
 			statusCode: 404,
 		}

@@ -14,7 +14,7 @@ export const registerUser = async body => {
 		const user = users.find(user => user.login === body.login)
 		if (user) {
 			return {
-				success: 0,
+				success: false,
 				message: 'Такой пользователь есть, введите другой логин',
 				statusCode: 409,
 			}
@@ -47,7 +47,7 @@ export const loginUser = async body => {
 
 		if (resultCheck.success !== true) {
 			return {
-				success: 0,
+				success: false,
 				message: 'Не удалось найти такого пользователя',
 				statusCode: 404,
 			}

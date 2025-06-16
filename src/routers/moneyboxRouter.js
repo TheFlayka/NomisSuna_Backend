@@ -8,7 +8,7 @@ import {
 	getMoneyboxController,
 	updateMoneyboxController,
 } from '../controllers/moneyboxController.js'
-import { registerMiddleware } from '../middleware/registerMiddleware.js'
+import { registerMiddleware } from '../middleware/authMiddleware.js'
 const router = Router()
 
 router.use(checkTokenMiddleWare)
